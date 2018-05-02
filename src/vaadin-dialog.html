@@ -16,14 +16,11 @@ This program is available under Apache License Version 2.0, available at https:/
       }
     </style>
 
-    <vaadin-dialog-overlay id="overlay"
-      on-opened-changed="_onOverlayOpened"
-      with-backdrop
-      focus-trap>
+    <vaadin-dialog-overlay id="overlay" on-opened-changed="_onOverlayOpened" with-backdrop focus-trap>
     </vaadin-dialog-overlay>
   </template>
   <script>
-    (function() {
+    (function () {
 
       /**
        * The overlay element.
@@ -152,6 +149,13 @@ This program is available under Apache License Version 2.0, available at https:/
           if (this.noCloseOnEsc) {
             e.preventDefault();
           }
+        }
+
+        getElementFromInstance(element) {
+          if (this.$.overlay) {
+            return this.$.overlay.shadowRoot.querySelector(element);
+          }
+          return null;
         }
       }
 
